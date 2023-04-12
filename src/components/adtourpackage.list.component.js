@@ -115,7 +115,7 @@ export class TourList extends Component {
                         <td className='w-10 px-6 py-4 overflow-x-auto text-xl font-bold'>{currenttour.name}</td>
                         <td className='px-6 py-4'>{currenttour.fromLocation}</td>
                         <td className='px-6 py-4'>{currenttour.toLocation}</td>
-                        <td className='px-6 py-4'>{currenttour.description}</td>
+                        <td className='px-6 py-4 '><p className='h-40 overflow-y-auto break-normal'>{currenttour.description}</p></td>
                         <td className='px-6 py-4'>{currenttour.transportMode}</td>
                         <td className='px-6 py-4'>{currenttour.price}</td>
                         <td className='px-6 py-4'>{currenttour.date.substring(0, 10)}</td>
