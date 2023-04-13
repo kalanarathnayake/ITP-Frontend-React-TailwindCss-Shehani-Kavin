@@ -175,13 +175,13 @@ export class TourList extends Component {
         const headers = [["Tour Name", "Starting From", "Destination", "Description", "Mode of transport", "Price", "Date"]];
         const tour = this.state.tour.map(
             Tour => [
-                tour.name,
-                tour.fromLocation,
-                tour.toLocation,
-                tour.description,
-                tour.transportMode,
-                tour.price,
-                tour.date.substring(0, 10)
+                Tour.name,
+                Tour.fromLocation,
+                Tour.toLocation,
+                Tour.description,
+                Tour.transportMode,
+                Tour.price,
+                Tour.date.substring(0, 10)
             ]
         );
         let content = {
