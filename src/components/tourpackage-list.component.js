@@ -380,7 +380,7 @@ export class TourPackageList extends Component {
                                                             </div>
                                                             {/* This add button onlu shows for tour guidsDS*/}
                                                             <div class="">
-                                                                Add New Document
+                                                                Add New Tour Package
                                                             </div>
                                                         </div>
                                                     </Link>

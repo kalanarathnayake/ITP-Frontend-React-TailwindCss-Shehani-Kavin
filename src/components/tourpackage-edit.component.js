@@ -135,7 +135,7 @@ export default class EditTour extends Component {
                                         <form className='rounded-lg ' onSubmit={this.onSubmit}>
                                             <div class="">
                                                 <p className='text-4xl font-semibold text-black uppercase drop-shadow-lg'>
-                                                    Create Tour Package
+                                                    Update Tour Package
                                                 </p>
                                                 <div className="grid grid-cols-1 gap-4 form-group">
 

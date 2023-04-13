@@ -5,11 +5,9 @@ import Navbar from "./components/navbar.component";
 
 import { DocumentList } from "./components/document-list.component";
 import { CreateDocument } from "./components/document-add.component";
-import EditDocument from "./components/document-edit.component";
 
 import { CreateTicket } from "./components/ticket-add.component";
 import { TicketList } from './components/ticket-list.component';
-import EditTicket from './components/ticket-edit.component';
 
 import { CusTicketList } from './components/custicket-list.component';
 import { CreateCusTicket } from './components/custicket-add.component';
