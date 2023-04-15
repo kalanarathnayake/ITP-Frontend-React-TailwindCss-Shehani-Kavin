@@ -19,10 +19,11 @@ import { TourList } from './components/adtourpackage.list.component';
 import { InquiryList } from './components/inquiry-list.component';
 import { CreateInquiry } from './components/inquiry-add.component';
 
-
 import { GuideList } from './components/guide-list.component';
 import { CreateGuide } from './components/guide-add.component';
 import { GuidePackList } from './components/guidePack-list.component';
+
+import { AdInquiryList } from './components/adInquiry-list.component';
 
 function App() {
   return (
@@ -46,6 +47,8 @@ function App() {
 
           <Route exact path="/inquiry" element={<InquiryList />} />
           <Route exact path="/createInquiry" element={<CreateInquiry />} />
+
+          <Route exact path="/adInquiry" element={<AdInquiryList />} />
 
           <Route exact path="/guide" element={<GuideList />} />
           <Route exact path="/createGuide" element={<CreateGuide />} />

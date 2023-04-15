@@ -4,7 +4,7 @@ import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
-import EditInquiry from './inquiry-edit.component';
+import AdEditInquiry from './adInquiry-edit.component';
 
 const Inquiry = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -46,7 +46,7 @@ const Inquiry = props => (
     </tr>
 )
 
-export class InquiryList extends Component {
+export class AdInquiryList extends Component {
     constructor(props) {
         super(props);
         this.deleteInquiry = this.deleteInquiry.bind(this);
@@ -232,24 +232,20 @@ export class InquiryList extends Component {
                                 <table>
                                     <tr>
                                         <th className='drop-shadow-md'>
-                                            <h3>My Inquiries</h3>
+                                            <div class="flex">
+                                                <div class="">
+                                                    <h3>Inquiries Catalogue</h3>
+                                                </div>
+                                                <div class="">
+                                                    <span
+                                                        class="ml-1 inline-block whitespace-nowrap rounded-2xl bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700 bg-green-400">
+                                                        Admin
+                                                    </span>
+                                                </div>
+                                            </div>
                                         </th>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-                                                    <Link className='font-semibold text-white no-underline' to={"/createInquiry"}>
-                                                        <div class="flex">
-                                                            <div class="">
-                                                                <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z" />
-                                                                </svg>
-                                                            </div>
-                                                            <div class="">
-                                                                Place new Inquiry
-                                                            </div>
-                                                        </div>
-                                                    </Link>
-                                                </button>
                                                 <button class="flex text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportInquiry()}>
                                                     <div class="">
                                                         <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -300,7 +296,7 @@ export class InquiryList extends Component {
                             <div class="">
                                 <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
                                     <Modal.Body className={"custom-modal-body-login p-0 mb-5"}>
-                                        <EditInquiry classId={this.state.id} key={this.state.id} inquiryId={this.state.id} close={this.closeModalBox} />
+                                        <AdEditInquiry classId={this.state.id} key={this.state.id} inquiryId={this.state.id} close={this.closeModalBox} />
                                     </Modal.Body>
                                 </Modal>
                             </div>

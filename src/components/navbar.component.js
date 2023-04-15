@@ -13,6 +13,7 @@ function navbar() {
           <a href="/guide" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guides</a>
           <a href="/guidePack" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guide Packs</a>
           <a href="/inquiry" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inquiry</a>
+          <a href="/adInquiry" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inquiry.Admin</a>
           {/* <a href="/#" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">SampleData</a> */}
         </div>
         <div className="grid grid-cols-2 gap-1">
