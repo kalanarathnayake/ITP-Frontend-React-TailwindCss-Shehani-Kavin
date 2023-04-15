@@ -11,9 +11,12 @@ import { TicketList } from './components/ticket-list.component';
 
 import { CusTicketList } from './components/custicket-list.component';
 import { CreateCusTicket } from './components/custicket-add.component';
+
 import { TourPackageList } from './components/tourpackage-list.component';
 import { CreateTour } from './components/tourpackage-add.component';
 import { TourList } from './components/adtourpackage.list.component';
+
+import { InquiryList } from './components/inquiry-list.component';
 
 function App() {
   return (
@@ -34,6 +37,8 @@ function App() {
           <Route exact path="/createTour" element={<CreateTour />} />
 
           <Route exact path="/adTourPackageList" element={<TourList />} />
+
+          <Route exact path="/inquiry" element={<InquiryList />} />
 
 
         </Routes>

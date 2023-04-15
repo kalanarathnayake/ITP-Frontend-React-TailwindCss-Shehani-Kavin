@@ -10,6 +10,7 @@ function navbar() {
           <a href="/ticket" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">C.Admin</a>
           <a href="/tour" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">TourPackages</a>
           <a href="/adTourPackageList" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">TP.Admin</a>
+          <a href="/inquiry" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inquiry</a>
           {/* <a href="/#" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">SampleData</a> */}
         </div>
         <div className="grid grid-cols-2 gap-1">
