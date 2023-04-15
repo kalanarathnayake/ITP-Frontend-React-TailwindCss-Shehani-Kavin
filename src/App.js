@@ -15,6 +15,10 @@ import { TourPackageList } from './components/tourpackage-list.component';
 import { CreateTour } from './components/tourpackage-add.component';
 import { TourList } from './components/adtourpackage.list.component';
 
+import { GuideList } from './components/guide-list.component';
+import { CreateGuide } from './components/guide-add.component';
+import { GuidePackList } from './components/guidePack-list.component';
+
 function App() {
   return (
     <div>
@@ -35,6 +39,10 @@ function App() {
 
           <Route exact path="/adTourPackageList" element={<TourList />} />
 
+
+          <Route exact path="/guide" element={<GuideList />} />
+          <Route exact path="/createGuide" element={<CreateGuide />} />
+          <Route exact path="/guidePack" element={<GuidePackList />} />
 
         </Routes>
       </Router>
