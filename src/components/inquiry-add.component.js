@@ -22,54 +22,46 @@ export class CreateInquiry extends Component {
             contactNum: '',
             address: '',
             date: new Date(),
-            status: ''
+            status: 'Pending'
         }
     }
 
     onChangeCusName(e) {
         this.setState({
-            CusName: e.target.CusName
+            CusName: e.target.value
         });
     }
     onChangeType(e) {
         this.setState({
-            type: e.target.type
+            type: e.target.value
         });
     }
     onChangeDescription(e) {
         this.setState({
-            description: e.target.description
+            description: e.target.value
         });
     }
     onChangeContactNum(e) {
         this.setState({
-            contactNum: e.target.contactNum
+            contactNum: e.target.value
         });
     }
     onChangeAddress(e) {
         this.setState({
-            address: e.target.address
+            address: e.target.value
         });
     }
-    onChangeDate(e) {
+    onChangeDate(date) {
         this.setState({
-            date: e.target.date
+            date: date
         });
     }
     onChangeStatus(e) {
         this.setState({
-            status: e.target.status
+            status: e.target.value
         });
     }
-    /*
-        CusName,
-        type,
-        description,
-        contactNum,
-        address,
-        date,
-        status
-*/
+
     onSubmit(e) {
         e.preventDefault();
         const inquiry = {
@@ -151,8 +143,9 @@ export class CreateInquiry extends Component {
                                                         required
                                                         placeholder=''
                                                         className="form-control"
-                                                        value={this.state.lastName}
-                                                        onChange={this.onChangeLastName}
+                                                        value={this.state.type}
+                                                        onChange={this.onChangeType}
+                                                        selected="Payment"
                                                     >
                                                         <option>Payment</option>
                                                         <option>Travel Package</option>
@@ -186,33 +179,34 @@ export class CreateInquiry extends Component {
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-                                                <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
-                                                    <DatePicker
-                                                        className='m-2'
-                                                        selected={this.state.date}
-                                                        onChange={this.onChangeDate}
+
+                                                <div class="">
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
+                                                    <textarea type="text"
+                                                        required
+                                                        placeholder=''
+                                                        className="form-control"
+                                                        value={this.address}
+                                                        onChange={this.onChangeAddress}
                                                     />
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4 form-group">
-                                                    <div class="">
-                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
-                                                        <input type="text"
-                                                            required
-                                                            placeholder=''
-                                                            className="form-control"
-                                                            value={this.address}
-                                                            onChange={this.onChangeAddress}
-                                                        />
-                                                    </div>
                                                     <div class="">
                                                         <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Status : </label>
                                                         <input textarea="text"
                                                             disabled
                                                             placeholder='Pending!'
                                                             className="form-control"
-                                                            value="Pending"
+                                                            value={this.status}
                                                             onChange={this.onChangeStatus}
+                                                        />
+                                                    </div>
+                                                    <div className="form-group">
+                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
+                                                        <DatePicker
+                                                            className='m-2'
+                                                            selected={this.state.date}
+                                                            onChange={this.onChangeDate}
                                                         />
                                                     </div>
                                                 </div><p />

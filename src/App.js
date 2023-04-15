@@ -47,7 +47,6 @@ function App() {
           <Route exact path="/inquiry" element={<InquiryList />} />
           <Route exact path="/createInquiry" element={<CreateInquiry />} />
 
-
           <Route exact path="/guide" element={<GuideList />} />
           <Route exact path="/createGuide" element={<CreateGuide />} />
           <Route exact path="/guidePack" element={<GuidePackList />} />

@@ -4,7 +4,7 @@ import axios from 'axios';
 import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { Modal,Card } from "react-bootstrap";
+import { Modal, Card } from "react-bootstrap";
 import { GuidePackDetails } from './guide-details.component';
 
 
@@ -16,7 +16,7 @@ const GuidePack = props => (
         <td className='px-6 py-4'>{props.guidepack.langType}</td>
         <td className='px-6 py-4'>{props.guidepack.vehicleType}</td>
         <td className='px-6 py-4'>{props.guidepack.price}</td>
-       
+
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
@@ -59,7 +59,7 @@ export class GuidePackList extends Component {
     constructor(props) {
         super(props);
 
-       
+
         this.gotoGuidePackDetails = this.gotoGuidePackDetails.bind(this);
 
         this.state = {
@@ -93,7 +93,7 @@ export class GuidePackList extends Component {
         console.log("LIst id is :" + guideName);
     }
 
-  
+
 
     //Modal box
     closeModalBox = () => {
@@ -147,7 +147,7 @@ export class GuidePackList extends Component {
 
     guidePackList() {
         return this.state.guidepack.map(currentguidepack => {
-            return <GuidePack guidepack={currentguidepack}  gotoGuidePackDetails = {this.gotoGuidePackDetails} key={currentguidepack.guideName} />;
+            return <GuidePack guidepack={currentguidepack} gotoGuidePackDetails={this.gotoGuidePackDetails} key={currentguidepack.guideName} />;
         })
     }
 
@@ -164,7 +164,7 @@ export class GuidePackList extends Component {
                         <td className='px-6 py-4'>{currentguidepack.langType}</td>
                         <td className='px-6 py-4'>{currentguidepack.vehicleType}</td>
                         <td className='px-6 py-4'>{currentguidepack.price}</td>
-                      
+
                         <td className='flex justify-center px-6 py-4 '>
                             {
                                 <div class="">
@@ -321,17 +321,17 @@ export class GuidePackList extends Component {
                             <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
                                 <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
                                     <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                                        
+
                                         <tr>
                                             <th className="p-2 border-black tbhead ">Guide Name</th>
                                             <th className="p-2 tbhead">Tourist Area</th>
                                             <th className="p-2 tbhead">Language Type</th>
                                             <th className="p-2 tbhead">vehicle Type</th>
                                             <th className="p-2 tbhead">price</th>
-                                            
+
                                             <th className="p-2 text-center tbhead">Actions</th>
                                         </tr>
-                                       
+
                                     </thead>
                                     <tbody >
                                         {this.state.searchGuidePack == "" ? this.guidePackList() : this.searchGuidePackList()}

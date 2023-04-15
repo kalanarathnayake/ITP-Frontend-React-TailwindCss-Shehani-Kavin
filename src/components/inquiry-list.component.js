@@ -4,7 +4,7 @@ import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
-// import EditInquiry from "./document-edit.component";
+import EditInquiry from './inquiry-edit.component';
 
 const Inquiry = props => (
     <tr className='text-lg bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -286,7 +286,7 @@ export class InquiryList extends Component {
                                             <th className="p-2 tbhead">Type</th>
                                             <th className="p-2 tbhead">Description</th>
                                             <th className="p-2 tbhead">Contact Number</th>
-                                            <th className="p-2 tbhead">Addrss</th>
+                                            <th className="p-2 tbhead">Address</th>
                                             <th className="p-2 tbhead">Date</th>
                                             <th className="p-2 tbhead">Status</th>
                                             <th className="p-2 text-center tbhead">Actions</th>
@@ -298,11 +298,11 @@ export class InquiryList extends Component {
                                 </table>
                             </div>
                             <div class="">
-                                {/* <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
+                                <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
                                     <Modal.Body className={"custom-modal-body-login p-0 mb-5"}>
                                         <EditInquiry classId={this.state.id} key={this.state.id} inquiryId={this.state.id} close={this.closeModalBox} />
                                     </Modal.Body>
-                                </Modal> */}
+                                </Modal>
                             </div>
                         </div>
                     </div>

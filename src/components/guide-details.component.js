@@ -93,8 +93,7 @@ export class GuidePackDetails extends Component {
     searchGuideList() {
         return this.state.guide.map((currentguide) => {
             if (
-                this.state.searchGuidePack ==
-                currentguide.guideName
+                this.state.searchGuidePack === currentguide.guideName
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -105,7 +104,6 @@ export class GuidePackDetails extends Component {
                         <td className='px-6 py-4'>{currentguide.mobileNumber}</td>
                         <td className='px-6 py-4'>{currentguide.address}</td>
                         <td className='px-6 py-4'>{currentguide.nic}</td>
-
                     </tr>
                 );
             }
