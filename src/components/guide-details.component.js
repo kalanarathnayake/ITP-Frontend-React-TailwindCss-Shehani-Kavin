@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Swal from "sweetalert2";
-import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-import { Modal } from "react-bootstrap";
-import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 // import EditEmployee  from './employee-edit.component';
 // import ScheduleRequestDetails from './scheduleRequest-details.component';
-
 
 const GuidePack = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -48,12 +42,10 @@ export class GuidePackDetails extends Component {
         };
     }
 
-
     componentDidMount() {
         this.refreshGuideDetails();
         this.refreshList();
     }
-
 
     refreshGuideDetails() {
         axios.get('http://localhost:5000/api/guide/')
@@ -65,7 +57,6 @@ export class GuidePackDetails extends Component {
             })
     }
 
-
     refreshList() {
         axios.get('http://localhost:5000/api/guidepackage/')
             .then(response => {
@@ -76,13 +67,11 @@ export class GuidePackDetails extends Component {
             })
     }
 
-
     guideList() {
         return this.state.guide.map(currentguide => {
             return <Guide guide={currentguide} key={currentguide._id} />;
         })
     }
-
 
     guidePackList() {
         return this.state.guidepack.map(currentguidepack => {
@@ -96,15 +85,26 @@ export class GuidePackDetails extends Component {
                 this.state.searchGuidePack === currentguide.guideName
             ) {
                 return (
-                    <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                        <td className='px-6 py-4'>{currentguide.guideName}</td>
-                        <td className='px-6 py-4'>{currentguide.email}</td>
-                        <td className='px-6 py-4'>{currentguide.langType}</td>
-                        <td className='px-6 py-4'>{currentguide.serviceType}</td>
-                        <td className='px-6 py-4'>{currentguide.mobileNumber}</td>
-                        <td className='px-6 py-4'>{currentguide.address}</td>
-                        <td className='px-6 py-4'>{currentguide.nic}</td>
-                    </tr>
+                    <div class="">
+                        <div class="col-span-4 block p-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-70">
+                            <h5 class="mb-2 text-4xl  tracking-tight text-teal-900 dark:text-white">{currentguide.guideName}</h5>
+                            <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">email : {currentguide.email}</p>
+                            <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">Service Type : {currentguide.serviceType}</p>
+                            <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">Language Type : {currentguide.langType}</p>
+                            <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">NIC : {currentguide.nic}</p>
+                            <div class="grid grid-cols-2 gap-4 justify-between">
+                                <div class="">
+                                    <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">Address : {currentguide.address}</p>
+                                </div>
+                                <div class="">
+                                    <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">Contact Number : {currentguide.mobileNumber}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-black rounded-full mt-3 h-1">
+                            <br />
+                        </div>
+                    </div>
                 );
             }
         });
@@ -113,17 +113,24 @@ export class GuidePackDetails extends Component {
     searchGuidePackList() {
         return this.state.guidepack.map((currentguidepack) => {
             if (
-                this.state.searchGuidePack ==
-                currentguidepack.guideName
+                this.state.searchGuidePack === currentguidepack.guideName
             ) {
                 return (
-                    <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-                        <td className='px-6 py-4'>{currentguidepack.guideName}</td>
-                        <td className='px-6 py-4'>{currentguidepack.touristArea}</td>
-                        <td className='px-6 py-4'>{currentguidepack.langType}</td>
-                        <td className='px-6 py-4'>{currentguidepack.vehicleType}</td>
-                        <td className='px-6 py-4'>{currentguidepack.price}</td>
-                    </tr>
+                    <div className='mt-2 bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
+                        <div class="">
+                            <div class="col-span-4 block p-10 bg-white border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-70">
+                                <div class="grid grid-cols-2 gap-4 justify-between">
+                                    <div class="">
+                                        <h5 class="mb-2 text-4xl  tracking-tight text-teal-900 dark:text-white">{currentguidepack.touristArea}</h5>
+                                    </div>
+                                    <div class="">
+                                        <p class="text-red-600 uppercase font-semibold ml-44 mb-2 text-2xl  tracking-tight dark:text-white">{currentguidepack.price} per person</p>
+                                    </div>
+                                </div>
+                                <p class="mb-2 text-2xl  tracking-tight text-gray-900 dark:text-white">Mode Of Transport: {currentguidepack.vehicleType}</p>
+                            </div>
+                        </div>
+                    </div>
                 );
             }
         });
@@ -136,58 +143,19 @@ export class GuidePackDetails extends Component {
                     <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
                         <div className='items-center overflow-hidden'>
                             <div class="grid grid-cols-1 gap-4 content-start">
-
                             </div>
                             <div className='relative grid content-start grid-cols-1 gap-4 overflow-x-auto shadow-md sm:rounded-lg'>
                                 <div>
-                                    <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
-                                        <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                                            <tr>
-                                                <th className="p-2 border-black tbhead ">Guide Name</th>
-                                                <th className="p-2 tbhead">Email</th>
-                                                <th className="p-2 tbhead">Language Type</th>
-                                                <th className="p-2 tbhead">Service Type</th>
-                                                <th className="p-2 tbhead">Mobile Number</th>
-                                                <th className="p-2 tbhead">Address</th>
-                                                <th className="p-2 tbhead">NIC</th>
-
-                                            </tr>
-                                        </thead>
-
-                                        <tbody >
-                                            {this.state.searchGuidePack == "" ? this.guideList() : this.searchGuideList()}
-                                        </tbody>
-
-                                    </table>
+                                    {this.state.searchGuidePack === "" ? this.guideList() : this.searchGuideList()}
                                 </div>
-                                <table className='w-full text-sm text-left text-gray-500 dark:text-gray-400' >
-                                    <thead className='p-5 text-xs text-gray-700 uppercase border bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
-                                        <tr>
-                                            <th className="p-2 border-black tbhead ">Schedule ID</th>
-                                            <th className="p-2 border-black tbhead ">Employee ID</th>
-                                            <th className="p-2 tbhead">Date</th>
-                                            <th className="p-2 tbhead">Changing Employee ID</th>
-                                            <th className="p-2 tbhead">Changing Date</th>
-
-                                            <th className="p-2 tbhead">Status</th>
-
-                                            <th className="p-2 tbhead">More Details</th>
-                                            <th className="p-2 tbhead">Approve</th>
-                                            <th className="p-2 tbhead">Decline</th>
-                                            {/* <th className="p-2 text-center tbhead">Clock In</th>
-                                            <th className="p-2 text-center tbhead">Clock Out</th> */}
-                                        </tr>
-                                    </thead>
-                                    <tbody >
-                                        {this.state.searchGuidePack == "" ? this.guidePackList() : this.searchGuidePackList()}
-                                    </tbody>
-                                </table>
+                                <div class="">
+                                    {this.state.searchGuidePack === "" ? this.guidePackList() : this.searchGuidePackList()}
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

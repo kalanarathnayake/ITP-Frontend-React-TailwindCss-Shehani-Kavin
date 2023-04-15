@@ -156,7 +156,6 @@ export class GuidePackAdminList extends Component {
                             {
                                 <div class="">
                                     <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoUpdateGuidePack(currentguidepack._id) }}>
-
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
                                                 <svg class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -167,7 +166,6 @@ export class GuidePackAdminList extends Component {
                                                 Edit
                                             </div>
                                         </div>
-
                                     </button>
                                 </div>
                             }
@@ -177,9 +175,7 @@ export class GuidePackAdminList extends Component {
                                     <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-200'
                                         onClick={() => {
                                             //Delete the selected record
-                                           
-                                               
-                                           this.deleteGuidePack(currentguidepack._id);
+                                            this.deleteGuidePack(currentguidepack._id);
                                         }}>
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
@@ -246,9 +242,17 @@ export class GuidePackAdminList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table className=''>
                                     <tr>
-                                        <th className='drop-shadow-md'>
-                                            <h3>Guide Pack Details</h3>
-                                        </th>
+                                        <div class="flex">
+                                            <div class="">
+                                                <h3>Guide Pack Details</h3>
+                                            </div>
+                                            <div class="">
+                                                <span
+                                                    class="ml-1 inline-block whitespace-nowrap rounded-2xl bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700 bg-green-400">
+                                                    Admin
+                                                </span>
+                                            </div>
+                                        </div>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">

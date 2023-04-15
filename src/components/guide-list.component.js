@@ -224,7 +224,7 @@ export class GuideList extends Component {
         const doc = new jsPDF(orientation, unit, size);
 
         const title = "Guide List Report ";
-        const headers = [["Guide Name", "Email", "Language Type", "Service Type", "Mobile Numaber", "Address","NIC"]];
+        const headers = [["Guide Name", "Email", "Language Type", "Service Type", "Mobile Numaber", "Address", "NIC"]];
 
         const emp = this.state.guide.map(
             Guide => [
@@ -259,9 +259,18 @@ export class GuideList extends Component {
                             <div class="grid grid-cols-1 gap-4 content-start">
                                 <table className=''>
                                     <tr>
-                                        <th className='drop-shadow-md'>
-                                            <h3>Guide Details</h3>
-                                        </th>
+
+                                        <div class="flex">
+                                            <div class="">
+                                                <h3>Guide Details</h3>
+                                            </div>
+                                            <div class="">
+                                                <span
+                                                    class="ml-1 inline-block whitespace-nowrap rounded-2xl bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700 bg-green-400">
+                                                    Guide
+                                                </span>
+                                            </div>
+                                        </div>
                                         <td className='flex justify-end gap-2'>
                                             <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
                                                 <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
