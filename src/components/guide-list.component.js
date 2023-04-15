@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
-// import EditEmployee from './employee-edit.component';
+import EditGuide from './guide-edit.component';
 
 
 const Guide = props => (
@@ -21,7 +21,7 @@ const Guide = props => (
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { props.gotoUpdateEmployee(props.guide._id) }}>
+                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { props.gotoUpdateGuide(props.guide._id) }}>
 
                         <div class=" grid grid-cols-2 gap-1 hover:text-black duration-100">
                             <div class="">
@@ -37,7 +37,7 @@ const Guide = props => (
                     </button>
                 </div>
                 <div class="">
-                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => { props.deleteEmployee(props.guide._id) }}>
+                    <button className='inline-flex items-center px-4 py-2 ml-1 text-sm font-medium text-white duration-100 bg-red-500 rounded-md hover:bg-red-200' onClick={() => { props.deleteGuide(props.guide._id) }}>
                         <div class="grid grid-cols-2 gap-1 hover:text-black">
                             <div class="">
                                 <svg class="h-5 w-5 mr-2 " fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -60,8 +60,8 @@ export class GuideList extends Component {
     constructor(props) {
         super(props);
 
-        this.deleteEmployee = this.deleteEmployee.bind(this);
-        this.gotoUpdateEmployee = this.gotoUpdateEmployee.bind(this);
+        this.deleteGuide = this.deleteGuide.bind(this);
+        this.gotoUpdateGuide = this.gotoUpdateGuide.bind(this);
 
         this.state = {
             guide: [],
@@ -85,7 +85,7 @@ export class GuideList extends Component {
         this.refreshList();
     }
 
-    gotoUpdateEmployee = (id) => {
+    gotoUpdateGuide = (id) => {
         this.setState({
             id: id,
             show: true
@@ -108,9 +108,9 @@ export class GuideList extends Component {
     //     })
     // }
 
-    deleteEmployee(id) {
+    deleteGuide(id) {
 
-        axios.delete('http://localhost:5000/employee/' + id).then(response => {
+        axios.delete('http://localhost:5000/api/guide/' + id).then(response => {
             console.log(response.status)
             // this.refreshTable();
 
@@ -118,7 +118,7 @@ export class GuideList extends Component {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
-                    text: "Employee has been deleted!!",
+                    text: "Guide has been deleted!!",
                     background: '#fff',
                     confirmButtonColor: '#0a5bf2',
                     iconColor: '#60e004'
@@ -131,7 +131,7 @@ export class GuideList extends Component {
                 Swal.fire({
                     icon: 'Unsuccess',
                     title: 'Unsuccessfull',
-                    text: "Employee has not been deleted!!",
+                    text: "Guide has not been deleted!!",
                     background: '#fff',
                     confirmButtonColor: '#eb220c',
                     iconColor: '#60e004'
@@ -146,7 +146,7 @@ export class GuideList extends Component {
 
     guideList() {
         return this.state.guide.map(currentguide => {
-            return <Guide guide={currentguide} deleteEmployee={this.deleteEmployee} gotoUpdateEmployee={this.gotoUpdateEmployee} key={currentguide._id} />;
+            return <Guide guide={currentguide} deleteGuide={this.deleteGuide} gotoUpdateGuide={this.gotoUpdateGuide} key={currentguide._id} />;
         })
     }
 
@@ -168,7 +168,7 @@ export class GuideList extends Component {
                         <td className='flex justify-center px-6 py-4 '>
                             {
                                 <div class="">
-                                    <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoUpdateEmployee(currentguide._id) }}>
+                                    <button className='inline-flex items-center px-4 py-2 mr-1 text-sm font-medium text-white bg-indigo-500 rounded-md hover:bg-blue-200' onClick={() => { this.gotoUpdateGuide(currentguide._id) }}>
 
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
@@ -190,36 +190,7 @@ export class GuideList extends Component {
                                     <button className='inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-red-500 rounded-md hover:bg-red-200'
                                         onClick={() => {
                                             //Delete the selected record
-                                            axios.delete('http://localhost:5000/employee/' + currentguide._id).then(response => {
-                                                console.log(response.status)
-                                                // this.refreshTable();
-
-                                                if (response.status == 200) {
-                                                    Swal.fire({
-                                                        icon: 'success',
-                                                        title: 'Successful',
-                                                        text: "Employee has been deleted!!",
-                                                        background: '#fff',
-                                                        confirmButtonColor: '#0a5bf2',
-                                                        iconColor: '#60e004'
-                                                    })
-
-
-                                                }
-
-                                                else {
-                                                    Swal.fire({
-                                                        icon: 'Unsuccess',
-                                                        title: 'Unsuccessfull',
-                                                        text: "Employee has not been deleted!!",
-                                                        background: '#fff',
-                                                        confirmButtonColor: '#eb220c',
-                                                        iconColor: '#60e004'
-                                                    })
-                                                }
-
-                                                this.refreshList();
-                                            })
+                                            this.deleteGuide(currentguide._id);
                                         }}>
                                         <div class=" grid grid-cols-2 gap-1">
                                             <div class="">
@@ -242,7 +213,7 @@ export class GuideList extends Component {
     }
 
 
-    exportEmployee = () => {
+    exportGuide = () => {
         console.log("Export PDF")
 
 
@@ -252,17 +223,18 @@ export class GuideList extends Component {
         const marginLeft = 40;
         const doc = new jsPDF(orientation, unit, size);
 
-        const title = "Employee List Report ";
-        const headers = [["Employee ID", "Full Name", "Contact Number", "Email", "Address", "Position"]];
+        const title = "Guide List Report ";
+        const headers = [["Guide Name", "Email", "Language Type", "Service Type", "Mobile Numaber", "Address","NIC"]];
 
-        const emp = this.state.employee.map(
-            Employee => [
-                Employee.empID,
-                Employee.fullName,
-                Employee.contactNo,
-                Employee.email,
-                Employee.address,
-                Employee.position
+        const emp = this.state.guide.map(
+            Guide => [
+                Guide.guideName,
+                Guide.email,
+                Guide.langType,
+                Guide.serviceType,
+                Guide.mobileNumber,
+                Guide.address,
+                Guide.nic
             ]
         );
 
@@ -275,7 +247,7 @@ export class GuideList extends Component {
         doc.text(title, marginLeft, 40);
         require('jspdf-autotable');
         doc.autoTable(content);
-        doc.save("Employee-list.pdf")
+        doc.save("Guide-list.pdf")
     }
 
     render() {
@@ -296,7 +268,7 @@ export class GuideList extends Component {
                                                     <Link className='font-semibold text-white no-underline' to={"/createGuide"}>
                                                         Add Guide
                                                     </Link></button>
-                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportEmployee()}>
+                                                <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800" onClick={() => this.exportGuide()}>
 
                                                     Download Report Here
                                                 </button>
@@ -305,7 +277,7 @@ export class GuideList extends Component {
                                                 <input
                                                     className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
                                                     type="text"
-                                                    placeholder="Search by Employee ID"
+                                                    placeholder="Search by Guide Name"
                                                     aria-label="Search"
                                                     onChange={(e) => {
                                                         this.setState({
@@ -337,22 +309,20 @@ export class GuideList extends Component {
                                     </tbody>
                                 </table>
                             </div>
-                            {/* <div class="">
+                            <div class="">
                                 <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
-                                    <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
+                                    {/* <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
                                         <div class="">
                                             <Modal.Title className='items-center' >
-                                                <p className='font-semibold text-black uppercase '>
-                                                    Edit Employee
-                                                </p>
+                                               
                                             </Modal.Title>
                                         </div>
-                                    </Modal.Header >
+                                    </Modal.Header > */}
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
-                                        <EditEmployee empId={this.state.id} key={this.state.id} close={this.closeModalBox} />
+                                        <EditGuide guId={this.state.id} key={this.state.id} close={this.closeModalBox} />
                                     </Modal.Body>
                                 </Modal>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                 </div>
