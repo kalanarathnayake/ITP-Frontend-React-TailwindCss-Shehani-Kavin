@@ -24,6 +24,9 @@ import { GuideList } from './components/guide-list.component';
 import { CreateGuide } from './components/guide-add.component';
 import { GuidePackList } from './components/guidePack-list.component';
 
+import { GuidePackAdminList } from './components/guidePackAdmin-list.component';
+import CreateGuidePackage from './components/guidePackAdmin-add.component';
+
 function App() {
   return (
     <div>
@@ -50,6 +53,9 @@ function App() {
           <Route exact path="/guide" element={<GuideList />} />
           <Route exact path="/createGuide" element={<CreateGuide />} />
           <Route exact path="/guidePack" element={<GuidePackList />} />
+
+          <Route exact path="/guidePackAdmin" element={<GuidePackAdminList />} />
+          <Route exact path="/createGuidePack" element={<CreateGuidePackage />} />
 
         </Routes>
       </Router>

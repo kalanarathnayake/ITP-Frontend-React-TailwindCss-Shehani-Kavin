@@ -12,6 +12,7 @@ function navbar() {
           <a href="/adTourPackageList" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">TP.Admin</a>
           <a href="/guide" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guides</a>
           <a href="/guidePack" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guide Packs</a>
+          <a href="/guidePackAdmin" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Ad.Guide Packs</a>
           <a href="/inquiry" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inquiry</a>
           {/* <a href="/#" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">SampleData</a> */}
         </div>
