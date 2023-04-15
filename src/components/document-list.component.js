@@ -93,7 +93,6 @@ export class DocumentList extends Component {
                 console.log(res);
                 alert("Deleted");
             });
-
         this.setState({
             document: this.state.document.filter(el => el._id !== id)
         })
@@ -110,11 +109,10 @@ export class DocumentList extends Component {
         })
     }
 
-
     searchDocumentList() {
         return this.state.document.map((currentdocument) => {
             if (
-                this.state.searchDocument == currentdocument.docName
+                this.state.searchDocument === currentdocument.docName
             ) {
                 return (
 
@@ -176,7 +174,8 @@ export class DocumentList extends Component {
                                             </div>
                                             <div class="">
                                                 Delete
-                                            </div>                                        </button>
+                                            </div>
+                                        </button>
                                     }
                                 </div>
                             </div>
@@ -288,7 +287,7 @@ export class DocumentList extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.searchDocument == "" ? this.documentList() : this.searchDocumentList()}
+                                        {this.state.searchDocument === "" ? this.documentList() : this.searchDocumentList()}
                                     </tbody>
                                 </table>
                             </div>

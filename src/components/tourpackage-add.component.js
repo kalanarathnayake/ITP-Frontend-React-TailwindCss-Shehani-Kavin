@@ -62,15 +62,6 @@ export class CreateTour extends Component {
             date: date
         });
     }
-    /*
-        name,
-        fromLocation,
-        toLocation,
-        description,
-        transportMode,
-        price,
-        date,
-*/
     onSubmit(e) {
         e.preventDefault();
         const tour = {
@@ -148,16 +139,7 @@ export class CreateTour extends Component {
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-                                                {/* <div class="">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Created Date : </label>
-                                                    <div>
-                                                        <DatePicker
-                                                            className='m-2'
-                                                            selected={this.state.date}
-                                                            onChange={this.onChangeDate}
-                                                        />
-                                                    </div>
-                                                </div><p /> */}
+
                                                 <div className="form-group">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>From : </label>
                                                     <input textarea="text"

@@ -153,8 +153,7 @@ export class GuideList extends Component {
     searchGuideList() {
         return this.state.guide.map((currentguide) => {
             if (
-                this.state.searchGuide ==
-                currentguide.guideName
+                this.state.searchGuide === currentguide.guideName
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -314,19 +313,12 @@ export class GuideList extends Component {
                                         </tr>
                                     </thead>
                                     <tbody >
-                                        {this.state.searchGuide == "" ? this.guideList() : this.searchGuideList()}
+                                        {this.state.searchGuide === "" ? this.guideList() : this.searchGuideList()}
                                     </tbody>
                                 </table>
                             </div>
                             <div class="">
                                 <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
-                                    {/* <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
-                                        <div class="">
-                                            <Modal.Title className='items-center' >
-                                               
-                                            </Modal.Title>
-                                        </div>
-                                    </Modal.Header > */}
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
                                         <EditGuide guId={this.state.id} key={this.state.id} close={this.closeModalBox} />
                                     </Modal.Body>

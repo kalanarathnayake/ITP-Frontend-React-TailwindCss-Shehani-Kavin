@@ -3,14 +3,6 @@ import axios from 'axios';
 import * as Swal from "sweetalert2";
 import "react-datepicker/dist/react-datepicker.css"
 
-// firstName,
-// lastName,
-// passportID,
-// phoneNumber,
-// bookingDate
-// toLocation,
-// price,
-
 export default class CreateGuidePackage extends Component {
     constructor(props) {
         super(props);
@@ -120,7 +112,6 @@ export default class CreateGuidePackage extends Component {
                                                 Add Guide Pack
                                             </p>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Guide Name </label>
                                                     <input type="text"
@@ -147,7 +138,6 @@ export default class CreateGuidePackage extends Component {
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Language Type</label>
                                                     <div>
                                                         <input type="text"
-
                                                             placeholder=''
                                                             className="form-control"
                                                             value={this.state.langType}
@@ -167,7 +157,6 @@ export default class CreateGuidePackage extends Component {
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-
                                                 <div class="">
                                                     <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Price</label>
                                                     <input textarea="text"

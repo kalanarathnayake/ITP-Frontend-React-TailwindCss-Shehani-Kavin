@@ -7,7 +7,6 @@ import 'jspdf-autotable';
 import { Modal } from "react-bootstrap";
 import EditGuidePackage from './guidePackAdmin-edit.component';
 
-
 const GuidePack = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
         {/* <td>{props.employee._id}</td> */}
@@ -78,7 +77,6 @@ export class GuidePackAdminList extends Component {
             })
     }
 
-
     componentDidMount() {
         this.refreshList();
     }
@@ -103,7 +101,7 @@ export class GuidePackAdminList extends Component {
         axios.delete('http://localhost:5000/api/guidepackage/' + id).then(response => {
             console.log(response.status)
 
-            if (response.status == 200) {
+            if (response.status === 200) {
                 Swal.fire({
                     icon: 'success',
                     title: 'Successful',
@@ -112,10 +110,8 @@ export class GuidePackAdminList extends Component {
                     confirmButtonColor: '#0a5bf2',
                     iconColor: '#60e004'
                 })
-
                 this.refreshList();
             }
-
             else {
                 Swal.fire({
                     icon: 'Unsuccess',
@@ -126,11 +122,7 @@ export class GuidePackAdminList extends Component {
                     iconColor: '#60e004'
                 })
             }
-
-
         })
-
-
     }
 
     guidePackList() {
@@ -142,8 +134,7 @@ export class GuidePackAdminList extends Component {
     searchGuidePackList() {
         return this.state.guidepack.map((currentguidepack) => {
             if (
-                this.state.searchGuidePack ==
-                currentguidepack.guideName
+                this.state.searchGuidePack === currentguidepack.guideName
             ) {
                 return (
                     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -197,20 +188,15 @@ export class GuidePackAdminList extends Component {
         });
     }
 
-
     exportGuidePacks = () => {
         console.log("Export PDF")
-
-
         const unit = "pt";
         const size = "A3";
         const orientation = "landscape";
         const marginLeft = 40;
         const doc = new jsPDF(orientation, unit, size);
-
         const title = "Guide Pack List Report ";
         const headers = [["Guide Name", "Tourist Area", "Language Type", "Vehicle Type", "Price"]];
-
         const gud = this.state.guidepack.map(
             GuidePack => [
                 GuidePack.guideName,
@@ -301,13 +287,6 @@ export class GuidePackAdminList extends Component {
                             </div>
                             <div class="">
                                 <Modal show={this.state.show} onHide={this.closeModalBox} centered size={"xl"}>
-                                    {/* <Modal.Header className='px-5 pt-4 border-2 shadow-md bg-gray-50' closeButton>
-                                        <div class="">
-                                            <Modal.Title className='items-center' >
-                                               
-                                            </Modal.Title>
-                                        </div>
-                                    </Modal.Header > */}
                                     <Modal.Body className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50'>
                                         <EditGuidePackage guId={this.state.id} key={this.state.id} close={this.closeModalBox} />
                                     </Modal.Body>

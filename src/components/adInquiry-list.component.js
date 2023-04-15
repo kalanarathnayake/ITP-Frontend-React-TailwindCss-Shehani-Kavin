@@ -111,7 +111,6 @@ export class AdInquiryList extends Component {
         })
     }
 
-
     searchInquiryList() {
         return this.state.inquiry.map((currentinquiry) => {
             if (

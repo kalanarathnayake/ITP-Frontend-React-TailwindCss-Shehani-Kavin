@@ -4,16 +4,6 @@ import * as Swal from "sweetalert2";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css"
 
-/*
-    CusName,
-    type,
-    description,
-    contactNum,
-    address,
-    date,
-    status
-*/
-
 export default class AdEditInquiry extends Component {
     constructor(props) {
         super(props);

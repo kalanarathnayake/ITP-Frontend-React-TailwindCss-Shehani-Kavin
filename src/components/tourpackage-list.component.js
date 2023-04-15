@@ -251,15 +251,7 @@ export class TourPackageList extends Component {
             }
         });
     }
-    /*
-        name,
-        fromLocation,
-        toLocation,
-        description,
-        transportMode,
-        price,
-        date,
-*/
+
     exportTour = () => {
         console.log("Exporting PDF")
         const unit = "pt";

@@ -15,9 +15,6 @@ const Ticket = props => (
         <td className='px-6 py-4'>{props.ticket.bookingDate.substring(0, 10)}</td>
         <td className='px-6 py-4'>{props.ticket.toLocation}</td>
         <td className='px-6 py-4'>{props.ticket.price}</td>
-        {/* <td className='px-6 py-4 '> <p className='h-32 overflow-y-auto'>{props.ticket.description}</p></td>
-        <td className='px-6 py-4'>{props.ticket.createdEmp}</td>
-        <td className='px-6 py-4'>{props.ticket.empTitle}</td> */}
         <td className='px-6 py-4'>
             <div class="flex justify-center">
                 <div class="">

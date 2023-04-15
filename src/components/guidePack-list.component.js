@@ -51,7 +51,6 @@ export class GuidePackList extends Component {
             })
     }
 
-
     componentDidMount() {
         this.refreshList();
     }
@@ -77,25 +76,6 @@ export class GuidePackList extends Component {
         })
     }
 
-    // searchGuidePackList() {
-    //     return this.state.guidepack.map((currentguidepack) => {
-    //         if (
-    //             this.state.searchGuidePack === currentguidepack.touristArea
-    //         ) {
-    //             return (
-    //                 <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
-    //                     <td className='px-6 py-4'>{currentguidepack.guideName}</td>
-    //                     <td className='px-6 py-4'>{currentguidepack.touristArea}</td>
-    //                     <td className='px-6 py-4'>{currentguidepack.langType}</td>
-    //                     <td className='px-6 py-4'>{currentguidepack.vehicleType}</td>
-    //                     <td className='px-6 py-4'>{currentguidepack.price}</td>
-    //                 </tr>
-
-    //             );
-    //         }
-    //     });
-    // }
-
     render() {
         return (
             <div className="flex flex-col px-5 pt-2">
@@ -109,21 +89,6 @@ export class GuidePackList extends Component {
                                             <h3>Guide Pack Details</h3>
                                         </th>
                                         <td className='flex justify-end gap-2'>
-                                            {/* <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end gap-2">
-                                            </div>
-                                            <div class="flex justify-end sm:flex-row sm:text-left sm:justify-end">
-                                                <input
-                                                    className="form-control rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-                                                    type="text"
-                                                    placeholder="Search by Employee ID"
-                                                    aria-label="Search"
-                                                    onChange={(e) => {
-                                                        this.setState({
-                                                            searchGuidePack: e.target.value
-                                                        });
-                                                    }}
-                                                />
-                                            </div> */}
                                         </td>
                                     </tr>
                                 </table>
@@ -144,4 +109,3 @@ export class GuidePackList extends Component {
         )
     }
 }
-

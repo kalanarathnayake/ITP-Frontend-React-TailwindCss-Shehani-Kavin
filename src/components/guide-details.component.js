@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import 'jspdf-autotable';
 import "react-datepicker/dist/react-datepicker.css"
-// import EditEmployee  from './employee-edit.component';
-// import ScheduleRequestDetails from './scheduleRequest-details.component';
 
 const GuidePack = props => (
     <tr className='bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -159,4 +157,3 @@ export class GuidePackDetails extends Component {
         )
     }
 }
-

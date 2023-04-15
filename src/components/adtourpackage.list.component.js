@@ -3,16 +3,6 @@ import axios from 'axios';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
-/*
-    name,
-    fromLocation,
-    toLocation,
-    description,
-    transportMode,
-    price,
-    date,
-*/
-
 const Tour = props => (
     <tr className='text-lg bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
         <td className='w-10 px-6 py-4 overflow-x-auto text-xl font-bold'>{props.tour.name}</td>
@@ -76,11 +66,11 @@ export class TourList extends Component {
         console.log("Tour id is :" + id);
     }
 
-    // //Modal box
-    // closeModalBox = () => {
-    //     this.setState({ show: false })
-    //     this.refreshTable();
-    // }
+    //Modal box
+    closeModalBox = () => {
+        this.setState({ show: false })
+        this.refreshTable();
+    }
 
     deleteTour(id) {
         axios.delete('http://localhost:5000/api/tour/' + id)
@@ -108,7 +98,7 @@ export class TourList extends Component {
     searchTourList() {
         return this.state.tour.map((currenttour) => {
             if (
-                this.state.searchTour == currenttour.toLocation
+                this.state.searchTour === currenttour.toLocation
             ) {
                 return (
                     <tr className='text-lg bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600'>
@@ -263,7 +253,7 @@ export class TourList extends Component {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {this.state.searchTour == "" ? this.tourList() : this.searchTourList()}
+                                        {this.state.searchTour === "" ? this.tourList() : this.searchTourList()}
                                     </tbody>
                                 </table>
                             </div>
