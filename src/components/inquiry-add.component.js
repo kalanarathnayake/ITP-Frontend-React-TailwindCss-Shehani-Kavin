@@ -4,7 +4,64 @@ import * as Swal from "sweetalert2";
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 
-/*
+export class CreateInquiry extends Component {
+    constructor(props) {
+        super(props);
+        this.onChangeCusName = this.onChangeCusName.bind(this);
+        this.onChangeType = this.onChangeType.bind(this);
+        this.onChangeDescription = this.onChangeDescription.bind(this);
+        this.onChangeContactNum = this.onChangeContactNum.bind(this);
+        this.onChangeAddress = this.onChangeAddress.bind(this);
+        this.onChangeDate = this.onChangeDate.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.state = {
+            CusName: '',
+            type: '',
+            description: '',
+            contactNum: '',
+            address: '',
+            date: new Date(),
+            status: ''
+        }
+    }
+
+    onChangeCusName(e) {
+        this.setState({
+            CusName: e.target.CusName
+        });
+    }
+    onChangeType(e) {
+        this.setState({
+            type: e.target.type
+        });
+    }
+    onChangeDescription(e) {
+        this.setState({
+            description: e.target.description
+        });
+    }
+    onChangeContactNum(e) {
+        this.setState({
+            contactNum: e.target.contactNum
+        });
+    }
+    onChangeAddress(e) {
+        this.setState({
+            address: e.target.address
+        });
+    }
+    onChangeDate(e) {
+        this.setState({
+            date: e.target.date
+        });
+    }
+    onChangeStatus(e) {
+        this.setState({
+            status: e.target.status
+        });
+    }
+    /*
         CusName,
         type,
         description,
@@ -13,103 +70,19 @@ import "react-datepicker/dist/react-datepicker.css";
         date,
         status
 */
-
-export class CreateInquiry extends Component {
-    constructor(props) {
-        super(props);
-        this.onChangeFirstName = this.onChangeFirstName.bind(this);
-        this.onChangeLastName = this.onChangeLastName.bind(this);
-        this.onChangePassportId = this.onChangePassportId.bind(this);
-        this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
-        this.onChangeBookingDate = this.onChangeBookingDate.bind(this);
-        this.onChangeToLocation = this.onChangeToLocation.bind(this);
-        this.onChangePrice = this.onChangePrice.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-        this.state = {
-            firstName: '',
-            lastName: '',
-            passportID: '',
-            phoneNumber: '',
-            bookingDate: new Date(),
-            toLocation: '',
-            price: ''
-        }
-    }
-
-    onChangeFirstName(e) {
-        this.setState({
-            firstName: e.target.value
-        });
-    }
-    onChangeLastName(e) {
-        this.setState({
-            lastName: e.target.value
-        });
-    }
-    onChangePhoneNumber(e) {
-        this.setState({
-            phoneNumber: e.target.value
-        });
-    }
-    onChangePassportId(e) {
-        this.setState({
-            passportID: e.target.value
-        });
-    }
-    onChangeBookingDate(date) {
-        this.setState({
-            bookingDate: date
-        });
-    }
-    onChangeToLocation(e) {
-
-        this.setState({
-            toLocation: e.target.value,
-        });
-        this.onChangePrice()
-
-    }
-
-    onChangePrice(e) {
-        const location = this.state.toLocation;
-        switch (location) {
-            case "USA":
-                this.setState({
-                    price: "140000"
-                }); break;
-            case "India":
-                this.setState({
-                    price: "120000"
-                }); break;
-            case "China":
-                this.setState({
-                    price: "170000"
-                }); break;
-            case "UK":
-                this.setState({
-                    price: "200000"
-                }); break;
-            case "Dubai":
-                this.setState({
-                    price: "213000"
-                }); break;
-            default:
-        }
-    }
-
     onSubmit(e) {
         e.preventDefault();
-        const ticket = {
-            firstName: this.state.firstName,
-            lastName: this.state.lastName,
-            passportID: this.state.passportID,
-            phoneNumber: this.state.phoneNumber,
-            bookingDate: this.state.bookingDate,
-            toLocation: this.state.toLocation,
-            price: this.state.price,
+        const inquiry = {
+            CusName: this.state.CusName,
+            type: this.state.type,
+            description: this.state.description,
+            contactNum: this.state.contactNum,
+            address: this.state.address,
+            date: this.state.date,
+            status: this.state.status,
         }
-        console.log(ticket);
-        axios.post('http://localhost:5000/api/ticket/add', ticket)
+        console.log(inquiry);
+        axios.post('http://localhost:5000/api/inquiry/add', inquiry)
             .then(res => {
                 console.log(res);
                 if (res.status === 200) {
@@ -117,7 +90,7 @@ export class CreateInquiry extends Component {
                     Swal.fire({
                         icon: 'success',
                         title: 'Successful',
-                        text: 'ticket has been created!!',
+                        text: 'Inquiry has been placed!',
                         background: '#fff',
                         confirmButtonColor: '#133EFA',
                         iconColor: '#60e004'
@@ -137,13 +110,13 @@ export class CreateInquiry extends Component {
 
     clearData = () => {
         this.setState({
-            firstName: '',
-            lastName: '',
-            passportID: '',
-            phoneNumber: '',
-            bookingDate: '',
-            toLocation: '',
-            price: ''
+            CusName: '',
+            type: '',
+            description: '',
+            contactNum: '',
+            address: '',
+            date: new Date(),
+            status: ''
         })
     }
 
@@ -158,113 +131,94 @@ export class CreateInquiry extends Component {
                                     <form className='px-12 py-12 border-2 rounded-lg shadow-md bg-gray-50' onSubmit={this.onSubmit}>
                                         <div class="">
                                             <p className='text-4xl font-semibold text-black uppercase drop-shadow-lg'>
-                                                Book A Ticket Now
+                                                Place an Inquiry
                                             </p>
                                             <div className="grid grid-cols-2 gap-4 form-group">
 
                                                 <div class="">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>First Name : </label>
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Your Name : </label>
                                                     <input type="text"
                                                         required
                                                         placeholder=''
                                                         className="form-control "
-                                                        value={this.state.firstName}
-                                                        onChange={this.onChangeFirstName}
+                                                        value={this.state.CusName}
+                                                        onChange={this.onChangeCusName}
                                                     /><p />
                                                 </div>
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Last Name : </label>
-                                                    <input type="text"
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Type : </label>
+                                                    <select type="text"
                                                         required
                                                         placeholder=''
                                                         className="form-control"
                                                         value={this.state.lastName}
                                                         onChange={this.onChangeLastName}
-                                                    /><p />
+                                                    >
+                                                        <option>Payment</option>
+                                                        <option>Travel Package</option>
+                                                        <option>Tour Guide</option>
+                                                        <option>Other</option>
+                                                    </select><p />
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
                                                 <div class="">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Passport Id Number : </label>
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Description : </label>
                                                     <div>
-                                                        <input type="text"
+                                                        <textarea type="text"
                                                             required
                                                             placeholder=''
                                                             className="form-control"
-                                                            value={this.state.passportID}
-                                                            onChange={this.onChangePassportId}
+                                                            value={this.state.description}
+                                                            onChange={this.onChangeDescription}
                                                         /><p />
                                                     </div>
                                                 </div>
                                                 <div className="form-group">
-                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Contact Number : </label>
-                                                    <input textarea="text"
+                                                    <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Contact Number: </label>
+                                                    <input type="text"
                                                         required
                                                         placeholder=''
                                                         className="form-control"
-                                                        value={this.state.phoneNumber}
-                                                        onChange={this.onChangePhoneNumber}
+                                                        value={this.state.contactNum}
+                                                        onChange={this.onChangeContactNum}
                                                     /><p />
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
                                                 <div className="form-group">
-                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Booking Date: </label>
+                                                    <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
                                                     <DatePicker
                                                         className='m-2'
-                                                        selected={this.state.bookingDate}
-                                                        onChange={this.onChangeBookingDate}
+                                                        selected={this.state.date}
+                                                        onChange={this.onChangeDate}
                                                     />
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4 form-group">
                                                     <div class="">
-                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>To Location : </label>
-                                                        <select type="text"
+                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
+                                                        <input type="text"
                                                             required
                                                             placeholder=''
                                                             className="form-control"
-                                                            value={this.toLocation}
-                                                            onChange={this.onChangeToLocation}
-                                                        >
-                                                            <option>UK</option>
-                                                            <option>China</option>
-                                                            <option>India</option>
-                                                            <option>USA</option>
-                                                            <option>Dubai</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="">
-                                                        <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Price : </label>
-                                                        <input textarea="text"
-                                                            required
-                                                            placeholder=''
-                                                            className="form-control"
-                                                            value={this.state.price}
-                                                            onChange={this.onChangePrice}
+                                                            value={this.address}
+                                                            onChange={this.onChangeAddress}
                                                         />
                                                     </div>
-
+                                                    <div class="">
+                                                        <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Status : </label>
+                                                        <input textarea="text"
+                                                            disabled
+                                                            placeholder='Pending!'
+                                                            className="form-control"
+                                                            value="Pending"
+                                                            onChange={this.onChangeStatus}
+                                                        />
+                                                    </div>
                                                 </div><p />
                                             </div>
-
-                                            {/* <div className="form-group ">
-                                                <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' for="grid-state">Department : </label>
-                                                <select type="text"
-                                                    required
-                                                    className="form-control"
-                                                    value={this.state.department}
-                                                    onChange={this.onChangeempdepartment}
-                                                >
-                                                    <option>Department 1</option>
-                                                    <option>Department 2</option>
-                                                    <option>Department 3</option>
-                                                    <option>Department 4</option>
-                                                    <option>Department 5</option>
-                                                </select><p />
-                                            </div> */}
-
                                             <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Book Ticket" />
+                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Place" />
                                             </div>
                                         </div>
                                     </form>

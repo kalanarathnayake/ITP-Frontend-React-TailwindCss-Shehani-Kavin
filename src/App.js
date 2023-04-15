@@ -17,6 +17,8 @@ import { CreateTour } from './components/tourpackage-add.component';
 import { TourList } from './components/adtourpackage.list.component';
 
 import { InquiryList } from './components/inquiry-list.component';
+import { CreateInquiry } from './components/inquiry-add.component';
+
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
           <Route exact path="/adTourPackageList" element={<TourList />} />
 
           <Route exact path="/inquiry" element={<InquiryList />} />
+          <Route exact path="/createInquiry" element={<CreateInquiry />} />
 
 
         </Routes>
