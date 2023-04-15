@@ -14,7 +14,7 @@ import "react-datepicker/dist/react-datepicker.css"
     status
 */
 
-export default class EditInquiry extends Component {
+export default class AdEditInquiry extends Component {
     constructor(props) {
         super(props);
         this.onChangeCusName = this.onChangeCusName.bind(this);
@@ -149,6 +149,7 @@ export default class EditInquiry extends Component {
                                                     <div class="">
                                                         <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Your Name : </label>
                                                         <input type="text"
+                                                            disabled
                                                             required
                                                             placeholder=''
                                                             className="form-control "
@@ -159,6 +160,7 @@ export default class EditInquiry extends Component {
                                                     <div className="form-group">
                                                         <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Type : </label>
                                                         <select type="text"
+                                                            disabled
                                                             required
                                                             placeholder=''
                                                             className="form-control"
@@ -178,6 +180,7 @@ export default class EditInquiry extends Component {
                                                         <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white' >Description : </label>
                                                         <div>
                                                             <textarea type="text"
+                                                                disabled
                                                                 required
                                                                 placeholder=''
                                                                 className="form-control"
@@ -189,6 +192,7 @@ export default class EditInquiry extends Component {
                                                     <div className="form-group">
                                                         <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Contact Number: </label>
                                                         <input type="text"
+                                                            disabled
                                                             required
                                                             placeholder=''
                                                             className="form-control"
@@ -202,6 +206,7 @@ export default class EditInquiry extends Component {
                                                     <div class="">
                                                         <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
                                                         <textarea type="text"
+                                                            disabled
                                                             required
                                                             placeholder=''
                                                             className="form-control"
@@ -213,36 +218,36 @@ export default class EditInquiry extends Component {
                                                         <div class="">
                                                             <label for="large-input" className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Status : </label>
                                                             <select textarea="text"
-                                                            disabled
+
                                                                 placeholder=''
                                                                 className="form-control"
                                                                 value={this.state.status}
                                                                 onChange={this.onChangeStatus}
                                                             ><option>Pending</option>
-                                                            <option>Reviewed</option>
-                                                        </select><p />
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
-                                                        <DatePicker
-                                                            disabled
-                                                            className='m-2'
-                                                            selected={this.state.date}
-                                                            onChange={this.onChangeDate}
-                                                        />
-                                                    </div>
-                                                </div><p />
+                                                                <option>Reviewed</option>
+                                                            </select><p />
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
+                                                            <DatePicker
+                                                                disabled
+                                                                className='m-2'
+                                                                selected={this.state.date}
+                                                                onChange={this.onChangeDate}
+                                                            />
+                                                        </div>
+                                                    </div><p />
+                                                </div>
+                                                <div className="text-center align-middle form-group">
+                                                    <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update" />
+                                                </div>
                                             </div>
-                                            <div className="text-center align-middle form-group">
-                                                <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Update" />
-                                            </div>
+                                        </form>
                                     </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
                 </div >
             </div >
         )
