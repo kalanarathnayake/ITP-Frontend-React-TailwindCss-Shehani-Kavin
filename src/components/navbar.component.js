@@ -10,6 +10,8 @@ function navbar() {
           <a href="/ticket" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">C.Admin</a>
           <a href="/tour" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">TourPackages</a>
           <a href="/adTourPackageList" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">TP.Admin</a>
+          <a href="/guide" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guides</a>
+          <a href="/guidePack" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Guide Packs</a>
           <a href="/inquiry" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">Inquiry</a>
           {/* <a href="/#" className="m-2 text-black no-underline duration-300 hover:text-blue-800 hover:font-normal">SampleData</a> */}
         </div>
