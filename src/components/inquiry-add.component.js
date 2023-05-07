@@ -74,30 +74,53 @@ export class CreateInquiry extends Component {
             status: this.state.status,
         }
         console.log(inquiry);
-        axios.post('http://localhost:5000/api/inquiry/add', inquiry)
-            .then(res => {
-                console.log(res);
-                if (res.status === 200) {
-                    this.clearData();
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Successful',
-                        text: 'Inquiry has been placed!',
-                        background: '#fff',
-                        confirmButtonColor: '#133EFA',
-                        iconColor: '#60e004'
-                    })
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
-                        text: 'Error in creating!',
-                        background: '#fff',
-                        confirmButtonColor: '#133EFA',
-                        iconColor: '#e00404'
-                    })
-                }
-            })
+        if (this.state.CusName.length < 5) {
+            this.setState({ CusNameError: "" })
+        }
+        else if (this.state.type.length < 1) {
+            this.setState({ typeError: "" })
+        }
+        else if (this.state.description.length < 4) {
+            this.setState({ descriptionError: "" })
+        }
+        else if (this.state.contactNum.length < 4) {
+            this.setState({ contactNumError: "" })
+        }
+        else if (this.state.address.length < 4) {
+            this.setState({ addressError: "" })
+        }
+        else if (this.state.date.length < 4) {
+            this.setState({ dateError: "" })
+        }
+        else if (this.state.status.length < 4) {
+            this.setState({ statusError: "" })
+        }
+        else {
+            axios.post('http://localhost:5000/api/inquiry/add', inquiry)
+                .then(res => {
+                    console.log(res);
+                    if (res.status === 200) {
+                        this.clearData();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Successful',
+                            text: 'Inquiry has been placed!',
+                            background: '#fff',
+                            confirmButtonColor: '#133EFA',
+                            iconColor: '#60e004'
+                        })
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Error in creating!',
+                            background: '#fff',
+                            confirmButtonColor: '#133EFA',
+                            iconColor: '#e00404'
+                        })
+                    }
+                })
+        }
     }
 
     clearData = () => {
@@ -126,7 +149,6 @@ export class CreateInquiry extends Component {
                                                 Place an Inquiry
                                             </p>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Your Name : </label>
                                                     <input type="text"
@@ -135,7 +157,7 @@ export class CreateInquiry extends Component {
                                                         className="form-control "
                                                         value={this.state.CusName}
                                                         onChange={this.onChangeCusName}
-                                                    /><p />
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.CusNameError}</p>
                                                 </div>
                                                 <div className="form-group">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Type : </label>
@@ -151,7 +173,7 @@ export class CreateInquiry extends Component {
                                                         <option>Travel Package</option>
                                                         <option>Tour Guide</option>
                                                         <option>Other</option>
-                                                    </select><p />
+                                                    </select><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.typeError}</p>
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
@@ -164,7 +186,7 @@ export class CreateInquiry extends Component {
                                                             className="form-control"
                                                             value={this.state.description}
                                                             onChange={this.onChangeDescription}
-                                                        /><p />
+                                                        /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.descriptionError}</p>
                                                     </div>
                                                 </div>
                                                 <div className="form-group">
@@ -175,11 +197,10 @@ export class CreateInquiry extends Component {
                                                         className="form-control"
                                                         value={this.state.contactNum}
                                                         onChange={this.onChangeContactNum}
-                                                    /><p />
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.contactNumError}</p>
                                                 </div>
                                             </div>
                                             <div className="grid grid-cols-2 gap-4 form-group">
-
                                                 <div class="">
                                                     <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Address : </label>
                                                     <textarea type="text"
@@ -188,7 +209,7 @@ export class CreateInquiry extends Component {
                                                         className="form-control"
                                                         value={this.address}
                                                         onChange={this.onChangeAddress}
-                                                    />
+                                                    /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.addressError}</p>
                                                 </div>
                                                 <div className="grid grid-cols-2 gap-4 form-group">
                                                     <div class="">
@@ -199,7 +220,7 @@ export class CreateInquiry extends Component {
                                                             className="form-control"
                                                             value={this.status}
                                                             onChange={this.onChangeStatus}
-                                                        />
+                                                        /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.statusError}</p>
                                                     </div>
                                                     <div className="form-group">
                                                         <label className='block mb-2 text-lg font-medium text-gray-900 dark:text-white'>Date: </label>
@@ -207,9 +228,9 @@ export class CreateInquiry extends Component {
                                                             className='m-2'
                                                             selected={this.state.date}
                                                             onChange={this.onChangeDate}
-                                                        />
+                                                        /><p className="block text-lg font-medium text-red-900 dark:text-white">{this.state.dateError}</p>
                                                     </div>
-                                                </div><p />
+                                                </div>
                                             </div>
                                             <div className="text-center align-middle form-group">
                                                 <input className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' type="submit" value="Place" />
